@@ -3,7 +3,6 @@ package edu.first.util.dashboard;
 import edu.first.identifiers.Position;
 import edu.first.identifiers.Switch;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 
 /**
  * General class that interacts with boolean values on the
@@ -47,12 +46,7 @@ public class BooleanDashboard implements Switch, Position {
      * @return if value exists
      */
     public boolean exists() {
-        try {
-            SmartDashboard.getBoolean(key, defaultValue);
-            return true;
-        } catch (TableKeyNotDefinedException ex) {
-            return false;
-        }
+        return SmartDashboard.containsKey(key);
     }
 
     /**

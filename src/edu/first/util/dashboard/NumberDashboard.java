@@ -3,7 +3,6 @@ package edu.first.util.dashboard;
 import edu.first.identifiers.Input;
 import edu.first.identifiers.Output;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 
 /**
  * General class that interacts with number values on the {@link SmartDashboard}
@@ -46,12 +45,7 @@ public class NumberDashboard implements Input, Output {
      * @return if value exists
      */
     public boolean exists() {
-        try {
-            SmartDashboard.getNumber(key, defaultValue);
-            return true;
-        } catch (TableKeyNotDefinedException ex) {
-            return false;
-        }
+        return SmartDashboard.containsKey(key);
     }
 
     /**
